@@ -26,6 +26,14 @@
             }
 
             var map = new google.maps.Map(document.getElementById('map'), options);
+
+const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+
+            var marker = new google.maps.Marker({
+                position:{lat:55.77044, lng:12.50378},
+                map:map,
+                icon:image
+            });
         }
     </script>
     <script async defer
