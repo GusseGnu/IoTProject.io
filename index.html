@@ -37,22 +37,27 @@ const image = "https://developers.google.com/maps/documentation/javascript/examp
             });
 
 
+
         var infoWindow = new google.maps.infoWindow({
-            content:'<h1>Test info <h1>'
+            content:'<h1>Test info </h1>'
         });
     }
-*/
+    */
+
 
     addMarker({lat:55.78218563118943, lng:12.518287389507199})
+    addMarker({lat:55.75943650690966, long:12.602908188470689})
+    addMarker({lat:55.68540384710508, long:12.57997862227395})
 
     function addMarker(coords){
         var marker = new google.maps.Marker({
                 position:coords,
                 map:map,
-                icon:image
+                icon:image,
+                content:'<h1>Test Marker </h1>'
             });
-    }
         }
+    }
 
     </script>
     <script async defer
