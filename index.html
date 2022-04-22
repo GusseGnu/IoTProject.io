@@ -44,10 +44,10 @@
             }
         ];
 
-        window.onload = function () { //function initMap() {
+        function initMap() { //window.onload = function () { 
             var mapOptions = {
                 zoom: 12,
-                center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
+                center: {lat:55.78218563118943, lng:12.518287389507199},//new google.maps.LatLng(markers[0].lat, markers[0].lng),
                 mapTypeID: google.maps.MapTypeId.ROADMAP
             };
 
@@ -73,7 +73,7 @@
                         infoWindow.setContent(data.description);
                         infoWindow.open(map, marker);
                     });
-                }) (marker, data);
+                })(marker, data);
             }
 
             map.setCenter(latlngBounds.getCenter());
