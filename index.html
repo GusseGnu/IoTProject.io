@@ -47,13 +47,13 @@
         function initMap() { //window.onload = function () { 
             var mapOptions = {
                 zoom: 12,
-                center: {lat:55.78218563118943, lng:12.518287389507199},//new google.maps.LatLng(markers[0].lat, markers[0].lng),
-                mapTypeID: google.maps.MapTypeId.ROADMAP
+                center: {lat:55.78218563118943, lng:12.518287389507199}//new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                //mapTypeID: google.maps.MapTypeId.ROADMAP
             };
 
             const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
-            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            var map = new google.maps.Map(document.getElementById('dvmap'), mapOptions);
             var infoWindow = new google.maps.InfoWindow();
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
