@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Maps</title>
     <style>
-        #map{
+        #map
+        {
             height: 400px;
             width: 100%;
         }
@@ -21,8 +22,8 @@
 
         function initMap(){
             var options = {
-                zoom:10,
-                center:{lat:55.78218563118943, lng:12.518287389507199}
+                zoom:12,
+                center:new google.maps.LatLng(markers[0].lat, markers[0].lng) //{lat:55.78218563118943, lng:12.518287389507199}
             }
 
             var map = new google.maps.Map(document.getElementById('map'), options);
@@ -42,6 +43,28 @@ const image = "https://developers.google.com/maps/documentation/javascript/examp
             content:'<h1>Test info </h1>'
         });
     
+    var markers = [
+        {
+            "title": 'Titles don\'t matter',
+            "lat": '55.78218563118943',
+            "long": '12.518287389507199',
+            "description": 'Time logged'
+        }
+        ,
+        {
+            "title": 'Titles don\'t matter',
+            "lat": '55.75943650690966',
+            "long": '12.602908188470689',
+            "description": 'Time logged'
+        }
+        ,
+        {
+            "title": 'Titles don\'t matter',
+            "lat": '55.68540384710508',
+            "long": '12.57997862227395',
+            "description": 'Time logged'
+        }
+    ]
 
 
     addMarker({lat:55.78218563118943, lng:12.518287389507199})
@@ -52,7 +75,7 @@ const image = "https://developers.google.com/maps/documentation/javascript/examp
         var marker = new google.maps.Marker({
                 position:coords,
                 map:map,
-                icon:image,
+                //icon:image,
                 title:"Test Marker" //'<h1>Test Marker </h1>'
                 
             });
