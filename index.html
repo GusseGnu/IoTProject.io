@@ -48,7 +48,7 @@
             var mapOptions = {
                 zoom: 12,
                 center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
-                //mapTypeID: google.maps.MapTypeId.ROADMAP
+                //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
             const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
@@ -80,19 +80,19 @@
             map.fitBounds(latlngBounds);
 
 
-            // addMarker({ lat: 55.78218563118943, lng: 12.518287389507199 })
-            // addMarker({ lat: 55.75943650690966, lng: 12.602908188470689 })
-            // addMarker({ lat: 55.68540384710508, lng: 12.57997862227395 })
+            addMarker({ lat: 55.78218563118943, lng: 12.518287389507199 })
+            addMarker({ lat: 55.75943650690966, lng: 12.602908188470689 })
+            addMarker({ lat: 55.68540384710508, lng: 12.57997862227395 })
 
-            // function addMarker(coords) {
-            //     var marker = new google.maps.Marker({
-            //         position: coords,
-            //         map: map,
-            //         //icon:image,
-            //         title: "Test Marker" //'<h1>Test Marker </h1>'
+            function addMarker(coords) {
+                var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    //icon:image,
+                    title: "Test Marker" //'<h1>Test Marker </h1>'
 
-            //     });
-            // }
+                });
+            }
         }
 
         // infoWindow.open({
