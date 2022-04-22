@@ -23,21 +23,21 @@
 
         var markers = [
             {
-                "title": 'Title',
+                "title": 'Titles don\'t matter',
                 "lat": '55.78218563118943',
                 "lng": '12.518287389507199',
                 "description": 'Time logged'
             }
             ,
             {
-                "title": 'Title',
+                "title": 'Titles don\'t matter',
                 "lat": '55.75943650690966',
                 "lng": '12.602908188470689',
                 "description": 'Time logged'
             }
             ,
             {
-                "title": 'Title',
+                "title": 'Titles don\'t matter',
                 "lat": '55.68540384710508',
                 "lng": '12.57997862227395',
                 "description": 'Time logged'
@@ -47,13 +47,13 @@
         function initMap() { //window.onload = function () { 
             var mapOptions = {
                 zoom: 12,
-                center: {lat:55.78218563118943, lng:12.518287389507199}//new google.maps.LatLng(markers[0].lat, markers[0].lng),
-                //mapTypeID: google.maps.MapTypeId.ROADMAP
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
+                mapTypeID: google.maps.MapTypeId.ROADMAP
             };
 
             const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
-            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            var map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
             var infoWindow = new google.maps.InfoWindow();
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
