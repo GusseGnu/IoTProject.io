@@ -1,17 +1,18 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Maps</title>
     <style>
-        #map
-        {
+        #map {
             height: 400px;
             width: 100%;
         }
     </style>
 </head>
+
 <body>
     <h1>IotProject</h1>
     <div id="map"></div>
@@ -20,77 +21,92 @@
     <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
     <script>
 
-var markers = [
-        {
-            "title": 'Titles don\'t matter',
-            "lat": '55.78218563118943',
-            "long": '12.518287389507199',
-            "description": 'Time logged'
-        }
-        ,
-        {
-            "title": 'Titles don\'t matter',
-            "lat": '55.75943650690966',
-            "long": '12.602908188470689',
-            "description": 'Time logged'
-        }
-        ,
-        {
-            "title": 'Titles don\'t matter',
-            "lat": '55.68540384710508',
-            "long": '12.57997862227395',
-            "description": 'Time logged'
-        }
-    ];
+        var markers = [
+            {
+                "title": 'Titles don\'t matter',
+                "lat": '55.78218563118943',
+                "long": '12.518287389507199',
+                "description": 'Time logged'
+            }
+            ,
+            {
+                "title": 'Titles don\'t matter',
+                "lat": '55.75943650690966',
+                "long": '12.602908188470689',
+                "description": 'Time logged'
+            }
+            ,
+            {
+                "title": 'Titles don\'t matter',
+                "lat": '55.68540384710508',
+                "long": '12.57997862227395',
+                "description": 'Time logged'
+            }
+        ];
 
-        function initMap(){
-            var options = {
-                zoom:12,
+        function initMap() {
+            var mapOptions = {
+                zoom: 12,
                 center: new google.maps.LatLng(markers[0].lat, markers[0].lng) //{lat:55.78218563118943, lng:12.518287389507199}
             };
 
-            var map = new google.maps.Map(document.getElementById('map'), options);
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+            const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
-/*
-            var marker = new google.maps.Marker({
-                position:{lat:55.78218563118943, lng:12.518287389507199},
-                map:map,
-                icon:image
-            });
+            var infoWindow = new google.maps.InfoWindow();
+            var lat_lng = new Array();
+            var latlngBounds = new google.maps.LatLngBounds();
 
-*/
+            for (i = 0; i < markers.length; i++)
+            {
+                var data = markers[i];
+                var tempLatLng = new google.maps.LatLng(data.lat, dat.lng);
+                lat_lng.push(tempLatLng);
+                var marker = new google.maps.Marker({
+                    position: tempLatLng,
+                    map: map,
+                    title: data.title
+                });
+                latlngBounds.extend(marker.position);
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(data.description);
+                        infoWindow.open(map,marker);
+                    });
+                }) 
+                (marker, data);
+            }
 
-        var infoWindow = new google.maps.InfoWindow({
-            content:'<h1>Test info </h1>'
-        });
+            map.setCenter(latlngBounds.getCenter());
+            map.fitBounds(latlngBounds);
 
 
-    addMarker({lat:55.78218563118943, lng:12.518287389507199})
-    addMarker({lat:55.75943650690966, long:12.602908188470689})
-    addMarker({lat:55.68540384710508, long:12.57997862227395})
+            // addMarker({ lat: 55.78218563118943, lng: 12.518287389507199 })
+            // addMarker({ lat: 55.75943650690966, long: 12.602908188470689 })
+            // addMarker({ lat: 55.68540384710508, long: 12.57997862227395 })
 
-    function addMarker(coords){
-        var marker = new google.maps.Marker({
-                position:coords,
-                map:map,
-                //icon:image,
-                title:"Test Marker" //'<h1>Test Marker </h1>'
-                
-            });
+            // function addMarker(coords) {
+            //     var marker = new google.maps.Marker({
+            //         position: coords,
+            //         map: map,
+            //         //icon:image,
+            //         title: "Test Marker" //'<h1>Test Marker </h1>'
+
+            //     });
+            // }
         }
-    }
 
-    infoWindow.open({
-            anchor: marker,
-            map,
-            shouldFocus: false
-        })
+        // infoWindow.open({
+        //     anchor: marker,
+        //     map,
+        //     shouldFocus: false
+        // })
 
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXnGWpzTdr4RosZvFjGLKRKky7j9Zo57A&callback=initMap">
-    </script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXnGWpzTdr4RosZvFjGLKRKky7j9Zo57A&callback=initMap">
+        </script>
 </body>
+
 </html>
