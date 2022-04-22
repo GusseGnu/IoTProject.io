@@ -20,30 +20,7 @@
     <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
     <script>
 
-        function initMap(){
-            var options = {
-                zoom:12,
-                center:{lat:55.78218563118943, lng:12.518287389507199} //new google.maps.LatLng(markers[0].lat, markers[0].lng)
-            }
-
-            var map = new google.maps.Map(document.getElementById('map'), options);
-
-const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-
-/*
-            var marker = new google.maps.Marker({
-                position:{lat:55.78218563118943, lng:12.518287389507199},
-                map:map,
-                icon:image
-            });
-
-*/
-
-        var infoWindow = new google.maps.InfoWindow({
-            content:'<h1>Test info </h1>'
-        });
-    
-    var markers = [
+var markers = [
         {
             "title": 'Titles don\'t matter',
             "lat": '55.78218563118943',
@@ -64,7 +41,30 @@ const image = "https://developers.google.com/maps/documentation/javascript/examp
             "long": '12.57997862227395',
             "description": 'Time logged'
         }
-    ]
+    ];
+
+        function initMap(){
+            var options = {
+                zoom:12,
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng) //{lat:55.78218563118943, lng:12.518287389507199}
+            };
+
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+
+/*
+            var marker = new google.maps.Marker({
+                position:{lat:55.78218563118943, lng:12.518287389507199},
+                map:map,
+                icon:image
+            });
+
+*/
+
+        var infoWindow = new google.maps.InfoWindow({
+            content:'<h1>Test info </h1>'
+        });
 
 
     addMarker({lat:55.78218563118943, lng:12.518287389507199})
