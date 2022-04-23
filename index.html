@@ -58,40 +58,40 @@
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
 
-            for (i = 0; i < markers.length; i++) {
-                var data = markers[i]
-                var tempLatLng = new google.maps.LatLng(data.lat, dat.lng);
-                lat_lng.push(tempLatLng);
-                var marker = new google.maps.Marker({
-                    position: tempLatLng,
-                    map: map,
-                    title: data.title
-                });
-                latlngBounds.extend(marker.position);
-                (function (marker, data) {
-                    google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.description);
-                        infoWindow.open(map, marker);
-                    });
-                }) (marker, data);
-            }
-
-            map.setCenter(latlngBounds.getCenter());
-            map.fitBounds(latlngBounds);
-
-            // function addMarker(coords) {
+            // for (i = 0; i < markers.length; i++) {
+            //     var data = markers[i]
+            //     var tempLatLng = new google.maps.LatLng(data.lat, dat.lng);
+            //     lat_lng.push(tempLatLng);
             //     var marker = new google.maps.Marker({
-            //         position: coords,
+            //         position: tempLatLng,
             //         map: map,
-            //         //icon:image,
-            //         title: "Test Marker" //'<h1>Test Marker </h1>'
-
+            //         title: data.title
             //     });
+            //     latlngBounds.extend(marker.position);
+            //     (function (marker, data) {
+            //         google.maps.event.addListener(marker, "click", function (e) {
+            //             infoWindow.setContent(data.description);
+            //             infoWindow.open(map, marker);
+            //         });
+            //     }) (marker, data);
             // }
 
-            // addMarker({ lat: 55.78218563118943, lng: 12.518287389507199 })
-            // addMarker({ lat: 55.75943650690966, lng: 12.602908188470689 })
-            // addMarker({ lat: 55.68540384710508, lng: 12.57997862227395 })
+            // map.setCenter(latlngBounds.getCenter());
+            // map.fitBounds(latlngBounds);
+
+            function addMarker(coords) {
+                var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    //icon:image,
+                    title: "Test Marker" //'<h1>Test Marker </h1>'
+
+                });
+            }
+
+            addMarker({ lat: 55.78218563118943, lng: 12.518287389507199 })
+            addMarker({ lat: 55.75943650690966, lng: 12.602908188470689 })
+            addMarker({ lat: 55.68540384710508, lng: 12.57997862227395 })
 
         }
 
