@@ -18,27 +18,31 @@
     <h1>IotProject</h1>
     <div id="map"></div>
     <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+        <p>Value: <span id="demo"></span></p>
+    </div>
     <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
     <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
     <script>
 
         var markers = [
             {
-                "title": 'Titles don\'t matter',
+                "title": '2022-04-20 16:20:00',
                 "lat": '55.78218563118943',
                 "lng": '12.518287389507199',
                 "description": '2022-04-20 16:20:00'
             }
             ,
             {
-                "title": 'Titles don\'t matter',
+                "title": '2022-04-20 17:43:07',
                 "lat": '55.75943650690966',
                 "lng": '12.602908188470689',
                 "description": '2022-04-20 17:43:07'
             }
             ,
             {
-                "title": 'Titles don\'t matter',
+                "title": '2022-04-20 20:01:49',
                 "lat": '55.68540384710508',
                 "lng": '12.57997862227395',
                 "description": '2022-04-20 20:01:49'
@@ -106,6 +110,14 @@
                     }
                 }
 
+            }
+
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("demo");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function () {
+                output.innerHTML = this.value;
             }
 
             // function addMarker(coords) {
