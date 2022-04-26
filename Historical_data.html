@@ -21,8 +21,8 @@
     <div id="map"></div>
     <p>TODO: Drag the slider to change the amount of points drawn</p>
     <div class="slidecontainer">
-        <input type="range" min="0" max=value="50" class="slider" id="myRange">
-        <p>Value: <span id="demo"></span></p>
+        <input type="range" min="0" , value="25" max="50" class="slider" id="myRange">
+        <p>Value: <span id="val"></span></p>
     </div>
     <script>
 
@@ -55,6 +55,8 @@
                 zoom: 12,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
+
+            $('slidecontainer').prop('max', markers.length)
 
             const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
@@ -113,7 +115,7 @@
             }
 
             var slider = document.getElementById("myRange");
-            var output = document.getElementById("demo");
+            var output = document.getElementById("val");
             output.innerHTML = slider.value;
 
             slider.oninput = function () {
