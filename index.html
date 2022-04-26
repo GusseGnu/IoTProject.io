@@ -19,6 +19,7 @@
     <h1>IotProject</h1>
     <a href="/Historical_data.html">Historical data</a>
     <div id="map"></div>
+    <p>Displaying the latest logged location</p>
     <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
     <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
     <script>
@@ -81,41 +82,41 @@
             map.setCenter(latlngBounds.getCenter());
             map.fitBounds(latlngBounds);
 
-            var path = new google.maps.MVCArray();
-            var service = new google.maps.DirectionsService();
-            var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
+            // var path = new google.maps.MVCArray();
+            // var service = new google.maps.DirectionsService();
+            // var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
 
-            for (var i = 0; i < lat_lng.length; i++) {
+            // for (var i = 0; i < lat_lng.length; i++) {
 
-                for (var i = 0; i < lat_lng.length; i++) {
-                    if ((i + 1) <= lat_lng.length) {
-                        var src = lat_lng[i];
-                        var des = lat_lng[i + 1];
-                        path.push(src);
-                        poly.setPath(path);
-                        // service.route({
-                        //     origin: src,
-                        //     destination: des,
-                        //     travelMode: google.maps.DirectionsTravelMode.WALKING
-                        // }, function (result, status) {
-                        //     if (status == google.maps.DirectionsStatus.OK) {
-                        //         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                        //             path.push(result.routes[0].overview_path[i]);
-                        //         }
-                        //     }
-                        // });
-                    }
-                }
+            //     for (var i = 0; i < lat_lng.length; i++) {
+            //         if ((i + 1) <= lat_lng.length) {
+            //             var src = lat_lng[i];
+            //             var des = lat_lng[i + 1];
+            //             path.push(src);
+            //             poly.setPath(path);
+            //             // service.route({
+            //             //     origin: src,
+            //             //     destination: des,
+            //             //     travelMode: google.maps.DirectionsTravelMode.WALKING
+            //             // }, function (result, status) {
+            //             //     if (status == google.maps.DirectionsStatus.OK) {
+            //             //         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+            //             //             path.push(result.routes[0].overview_path[i]);
+            //             //         }
+            //             //     }
+            //             // });
+            //         }
+            //     }
 
-            }
+            // }
 
-            var slider = document.getElementById("myRange");
-            var output = document.getElementById("demo");
-            output.innerHTML = slider.value;
+            // var slider = document.getElementById("myRange");
+            // var output = document.getElementById("demo");
+            // output.innerHTML = slider.value;
 
-            slider.oninput = function () {
-                output.innerHTML = this.value;
-            }
+            // slider.oninput = function () {
+            //     output.innerHTML = this.value;
+            // }
 
             // function addMarker(coords) {
             //     var marker = new google.maps.Marker({
