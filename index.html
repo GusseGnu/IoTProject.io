@@ -20,8 +20,6 @@
     <a href="/Historical_data.html">Historical data</a>
     <div id="map"></div>
     <p>Displaying the latest logged location</p>
-    <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
-    <p>Testy Tester Testy Tester Testy Tester Testy Tester</p>
     <script>
 
         var markers = [
@@ -36,11 +34,11 @@
         function initMap() { //window.onload = function () { 
             var mapOptions = {
                 center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
-                zoom: 13,
+                zoom: 14,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
-            const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+            const markerIcon = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
             var map = new google.maps.Map(document.getElementById('map'), mapOptions);
             var infoWindow = new google.maps.InfoWindow();
@@ -108,7 +106,7 @@
             //     var marker = new google.maps.Marker({
             //         position: coords,
             //         map: map,
-            //         //icon:image,
+            //         //icon:markerIcon,
             //         title: "Test Marker" //'<h1>Test Marker </h1>'
 
             //     });
