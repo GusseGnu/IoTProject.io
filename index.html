@@ -36,7 +36,7 @@
         function initMap() { //window.onload = function () { 
             var mapOptions = {
                 center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
-                zoom: 10,
+                zoom: 12,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
@@ -65,8 +65,8 @@
                 })(marker, data);
             }
 
-            map.setCenter(latlngBounds.getCenter());
-            map.fitBounds(latlngBounds);
+            //map.setCenter(latlngBounds.getCenter());
+            //map.fitBounds(latlngBounds);
 
             // var path = new google.maps.MVCArray();
             // var service = new google.maps.DirectionsService();
