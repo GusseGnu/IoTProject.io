@@ -23,7 +23,7 @@
 
     function setupSocket() {
 
-        let socket = new WebSocket("wss://104.248.247.191:8000")
+        let socket = new WebSocket("ws://104.248.247.191:8000")
 
         socket.onopen = function (e) {
             alert("[open] Connection established");
