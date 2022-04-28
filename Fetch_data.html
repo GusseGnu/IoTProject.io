@@ -9,49 +9,97 @@
 </header>
 
 <body>
-    <div>This is simple test to get data from a backend</div>
+    <!-- <div>This is simple test to get data from a backend</div>
     <div><span>Last update: </span><span id="time-container"></span></div>
     <button onclick="getUsers()">Get user data</button>
-    <div id="result-container"></div>
+    <div id="result-container"></div> -->
+    <button onclick="contactServer">Click Here</button>
 </body>
 <script>
 
-    var xhr = null;
-    getXmlHttpRequestObject = function () {
-        if (!xhr) {
-            // Create a new XMLHttpRequest object 
-            xhr = new XMLHttpRequest();
-        }
-        return xhr;
-    };
-    function dataCallback() {
-        // Check response is ready or not
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log("User data received!");
-            getDate();
-            dataDiv = document.getElementById('result-container');
-            // Set current data text
-            dataDiv.innerHTML = xhr.responseText;
-        }
-    }
-    function getUsers() {
+    // if ("WebSocket" in window) {
+    //     alert("WebSocket is supported by your Browser!");
 
-        console.log("Get users...");
-        xhr = getXmlHttpRequestObject();
-        xhr.onreadystatechange = dataCallback;
-        // asynchronous requests
-        xhr.open("GET", "http://104.248.247.191:443", true);
-        // Send the request over the network
-        xhr.send(null);
-    }
-    function getDate() {
-        date = new Date().toString();
-        document.getElementById('time-container').textContent
-            = date;
-    }
-    (function () {
-        getDate();
-    })();
+        // Let us open a web socket
+        const ws = new WebSocket("ws://104.248.247.191:8000");
+
+        socket.addEventListener('open', function (event) {
+            socket.send('Connection established');
+        });
+
+        socket.addEventListener('message', function (event){
+            console.log(event.data);
+        });
+
+        const contactServer = () => {
+            socket.send('Initialize');
+        } 
+
+
+
+    //     ws.onopen = function () {
+
+    //         // Web Socket is connected, send data using send()
+    //         ws.send("Message to send");
+    //         alert("Message is sent...");
+    //     };
+
+    //     ws.onmessage = function (evt) {
+    //         var received_msg = evt.data;
+    //         alert("Message is received...");
+    //     };
+
+    //     ws.onclose = function () {
+
+    //         // websocket is closed.
+    //         alert("Connection is closed...");
+    //     };
+    // } else {
+
+    //     // The browser doesn't support WebSocket
+    //     alert("WebSocket NOT supported by your Browser!");
+    // }
+
+
+
+
+
+    // var xhr = null;
+    // getXmlHttpRequestObject = function () {
+    //     if (!xhr) {
+    //         // Create a new XMLHttpRequest object
+    //         xhr = new XMLHttpRequest();
+    //     }
+    //     return xhr;
+    // };
+    // function dataCallback() {
+    //     // Check response is ready or not
+    //     if (xhr.readyState == 4 && xhr.status == 200) {
+    //         console.log("User data received!");
+    //         getDate();
+    //         dataDiv = document.getElementById('result-container');
+    //         // Set current data text
+    //         dataDiv.innerHTML = xhr.responseText;
+    //     }
+    // }
+    // function getUsers() {
+
+    //     console.log("Get users...");
+    //     xhr = getXmlHttpRequestObject();
+    //     xhr.onreadystatechange = dataCallback;
+    //     // asynchronous requests
+    //     xhr.open("GET", "http://104.248.247.191:443/users", true);
+    //     // Send the request over the network
+    //     xhr.send(null);
+    // }
+    // function getDate() {
+    //     date = new Date().toString();
+    //     document.getElementById('time-container').textContent
+    //         = date;
+    // }
+    // (function () {
+    //     getDate();
+    // })();
 </script>
 
 </html>
