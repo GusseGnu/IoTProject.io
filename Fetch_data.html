@@ -21,7 +21,7 @@
     //     alert("WebSocket is supported by your Browser!");
 
         // Let us open a web socket
-        const ws = new WebSocket("ws://104.248.247.191:8000");
+        const socket = new WebSocket("ws://104.248.247.191:8000");
 
         socket.addEventListener('open', function (event) {
             socket.send('Connection established');
