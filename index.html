@@ -118,7 +118,8 @@
             xhr = getXmlHttpRequestObject();
             xhr.onreadystatechange = dataCallback;
             // asynchronous requests
-            xhr.open("GET", "104.248.247.191:6969/users", true);
+            xhr.open("GET", "http://104.248.247.191:6969/users", true);
+
             // Send the request over the network
             xhr.send(null);
         }
