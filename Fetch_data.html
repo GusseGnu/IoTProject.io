@@ -32,7 +32,7 @@
         });
 
         function contactServer() {
-            socket.send("Initialize");
+            socket.onopen = () => socket.send("Initialize");
         }
     } 
 
