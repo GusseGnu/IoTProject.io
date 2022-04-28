@@ -16,12 +16,6 @@
 </body>
 <script>
 
-    const cars = [
-        { "make": "Porsche", "model": "911S" },
-        { "make": "Mercedes-Benz", "model": "220SE" },
-        { "make": "Jaguar", "model": "Mark VII" }
-    ];
-
     var xhr = null;
     getXmlHttpRequestObject = function () {
         if (!xhr) {
@@ -48,7 +42,7 @@
         // asynchronous requests
         xhr.open("GET", "http://104.248.247.191:80/users", true);
         // Send the request over the network
-        xhr.send("GET");
+        xhr.send(null);
     }
     function getDate() {
         date = new Date().toString();
