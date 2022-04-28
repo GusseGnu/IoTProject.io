@@ -42,28 +42,6 @@
     }
     function getUsers() {
 
-        fetch("http://104.248.247.191:80/users",
-            {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                // Strigify the payload into JSON:
-                body: JSON.stringify(cars)
-            }).then(res => {
-                if (res.ok) {
-                    return res.json()
-                } else {
-                    alert("something is wrong")
-                }
-            }).then(jsonResponse => {
-
-                // Log the response data in the console
-                console.log(jsonResponse)
-            }
-            ).catch((err) => console.error(err));
-
         console.log("Get users...");
         xhr = getXmlHttpRequestObject();
         xhr.onreadystatechange = dataCallback;
