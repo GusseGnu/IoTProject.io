@@ -19,8 +19,54 @@
     <h1>IotProject</h1>
     <a href="/Historical_data.html">Historical data</a>
     <div id="map"></div>
+
+    <div>This is simple test to get data from a backend</div>
+    <div><span>Last update: </span><span id="time-container"></span></div>
+    <button onclick="getUsers()">Get user data</button>
+    <div id="result-container"></div>
+    
     <p>Displaying the latest logged location</p>
     <script>
+
+        var xhr = null;
+
+        getXmlHttpRequestObject = function () {
+            if (!xhr) {
+                // Create a new XMLHttpRequest object 
+                xhr = new XMLHttpRequest();
+            }
+            return xhr;
+        };
+
+        function dataCallback() {
+            // Check response is ready or not
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log("User data received!");
+                getDate();
+                dataDiv = document.getElementById('result-container');
+                // Set current data text
+                dataDiv.innerHTML = xhr.responseText;
+            }
+        }
+
+        function getUsers() {
+            console.log("Get users...");
+            xhr = getXmlHttpRequestObject();
+            xhr.onreadystatechange = dataCallback;
+            // asynchronous requests
+            xhr.open("GET", "104.248.247.191:6969", true);
+            // Send the request over the network
+            xhr.send(null);
+        }
+
+        function getDate() {
+            date = new Date().toString();
+            document.getElementById('time-container').textContent
+                = date;
+        }
+        (function () {
+            getDate();
+        })();
 
         var markers = [
             {
@@ -62,45 +108,6 @@
                     });
                 })(marker, data);
             }
-
-            //map.setCenter(latlngBounds.getCenter());
-            //map.fitBounds(latlngBounds);
-
-            // var path = new google.maps.MVCArray();
-            // var service = new google.maps.DirectionsService();
-            // var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
-
-            // for (var i = 0; i < lat_lng.length; i++) {
-
-            //     for (var i = 0; i < lat_lng.length; i++) {
-            //         if ((i + 1) <= lat_lng.length) {
-            //             var src = lat_lng[i];
-            //             var des = lat_lng[i + 1];
-            //             path.push(src);
-            //             poly.setPath(path);
-            //             // service.route({
-            //             //     origin: src,
-            //             //     destination: des,
-            //             //     travelMode: google.maps.DirectionsTravelMode.WALKING
-            //             // }, function (result, status) {
-            //             //     if (status == google.maps.DirectionsStatus.OK) {
-            //             //         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-            //             //             path.push(result.routes[0].overview_path[i]);
-            //             //         }
-            //             //     }
-            //             // });
-            //         }
-            //     }
-
-            // }
-
-            // var slider = document.getElementById("myRange");
-            // var output = document.getElementById("demo");
-            // output.innerHTML = slider.value;
-
-            // slider.oninput = function () {
-            //     output.innerHTML = this.value;
-            // }
 
             // function addMarker(coords) {
             //     var marker = new google.maps.Marker({
