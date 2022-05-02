@@ -38,11 +38,12 @@
         //     }
         // ];
 
+        var markers = null
+
         function initMap() { //window.onload = function () { 
 
 
             var xhr = null;
-            //var markers = null;
             getXmlHttpRequestObject = function () {
                 if (!xhr) {
                     // Create a new XMLHttpRequest object
@@ -81,7 +82,6 @@
             //     getDate();
             // })();
 
-            var markers = JSON.parse(xhr.responseText);
 
 
             var mapOptions = {
