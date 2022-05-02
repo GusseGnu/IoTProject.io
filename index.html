@@ -42,7 +42,7 @@
 
 
             var xhr = null;
-            var markers = null;
+            //var markers = null;
             getXmlHttpRequestObject = function () {
                 if (!xhr) {
                     // Create a new XMLHttpRequest object
@@ -80,6 +80,8 @@
             // (function () {
             //     getDate();
             // })();
+
+            var markers = JSON.parse(xhr.responseText);
 
 
             var mapOptions = {
