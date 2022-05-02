@@ -59,10 +59,10 @@
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     console.log("User data received!");
                     getDate();
-                    var dataDiv = document.getElementById('result-container');
+                    dataDiv = document.getElementById('result-container');
                     // Set current data text
-                    dataDiv.innerHTML = xhr.responseText;
-                    markers = dataDiv.markers
+                    //dataDiv.innerHTML = xhr.responseText;
+                    var markers = JSON.parse(xhr.responseText);
                 }
             }
             function getUsers() {
