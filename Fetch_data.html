@@ -9,46 +9,46 @@
 </header>
 
 <body>
-    <!-- <div>This is simple test to get data from a backend</div>
+    <div>This is simple test to get data from a backend</div>
     <div><span>Last update: </span><span id="time-container"></span></div>
     <button onclick="getUsers()">Get user data</button>
-    <div id="result-container"></div> -->
+    <div id="result-container"></div>
 
     <!-- <button onclick="contactServer()">Click Here</button> -->
 
-    <button onclick="setupSocket()">Setup Socket</button>
+    <!-- <button onclick="setupSocket()">Setup Socket</button> -->
 
 </body>
 <script>
 
-    function setupSocket() {
+    // function setupSocket() {
 
-        let socket = new WebSocket("ws://104.248.247.191:8000")
+    //     let socket = new WebSocket("ws://104.248.247.191:8000")
 
-        socket.onopen = function (e) {
-            alert("[open] Connection established");
-            alert("Sending to server");
-            socket.send("My name is John");
-        };
+    //     socket.onopen = function (e) {
+    //         alert("[open] Connection established");
+    //         alert("Sending to server");
+    //         socket.send("My name is John");
+    //     };
 
-        socket.onmessage = function (event) {
-            alert(`[message] Data received from server: ${event.data}`);
-        };
+    //     socket.onmessage = function (event) {
+    //         alert(`[message] Data received from server: ${event.data}`);
+    //     };
 
-        socket.onclose = function (event) {
-            if (event.wasClean) {
-                alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-            } else {
-                // e.g. server process killed or network down
-                // event.code is usually 1006 in this case
-                alert('[close] Connection died');
-            }
-        };
+    //     socket.onclose = function (event) {
+    //         if (event.wasClean) {
+    //             alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+    //         } else {
+    //             // e.g. server process killed or network down
+    //             // event.code is usually 1006 in this case
+    //             alert('[close] Connection died');
+    //         }
+    //     };
 
-        socket.onerror = function (error) {
-            alert(`[error] ${error.message}`);
-        };
-    }
+    //     socket.onerror = function (error) {
+    //         alert(`[error] ${error.message}`);
+    //     };
+    // }
 
 
 
@@ -102,42 +102,42 @@
 
 
 
-    // var xhr = null;
-    // getXmlHttpRequestObject = function () {
-    //     if (!xhr) {
-    //         // Create a new XMLHttpRequest object
-    //         xhr = new XMLHttpRequest();
-    //     }
-    //     return xhr;
-    // };
-    // function dataCallback() {
-    //     // Check response is ready or not
-    //     if (xhr.readyState == 4 && xhr.status == 200) {
-    //         console.log("User data received!");
-    //         getDate();
-    //         dataDiv = document.getElementById('result-container');
-    //         // Set current data text
-    //         dataDiv.innerHTML = xhr.responseText;
-    //     }
-    // }
-    // function getUsers() {
+    var xhr = null;
+    getXmlHttpRequestObject = function () {
+        if (!xhr) {
+            // Create a new XMLHttpRequest object
+            xhr = new XMLHttpRequest();
+        }
+        return xhr;
+    };
+    function dataCallback() {
+        // Check response is ready or not
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log("User data received!");
+            getDate();
+            dataDiv = document.getElementById('result-container');
+            // Set current data text
+            dataDiv.innerHTML = xhr.responseText;
+        }
+    }
+    function getUsers() {
 
-    //     console.log("Get users...");
-    //     xhr = getXmlHttpRequestObject();
-    //     xhr.onreadystatechange = dataCallback;
-    //     // asynchronous requests
-    //     xhr.open("GET", "http://localhost:6969/users", true);
-    //     // Send the request over the network
-    //     xhr.send(null);
-    // }
-    // function getDate() {
-    //     date = new Date().toString();
-    //     document.getElementById('time-container').textContent
-    //         = date;
-    // }
-    // (function () {
-    //     getDate();
-    // })();
+        console.log("Get users...");
+        xhr = getXmlHttpRequestObject();
+        xhr.onreadystatechange = dataCallback;
+        // asynchronous requests
+        xhr.open("GET", "http://localhost:6969/users", true);
+        // Send the request over the network
+        xhr.send(null);
+    }
+    function getDate() {
+        date = new Date().toString();
+        document.getElementById('time-container').textContent
+            = date;
+    }
+    (function () {
+        getDate();
+    })();
 
 </script>
 
