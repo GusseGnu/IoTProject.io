@@ -118,6 +118,7 @@
             dataDiv = document.getElementById('result-container');
             // Set current data text
             dataDiv.innerHTML = xhr.responseText;
+            console.log(JSON.parse(xhr.responseText));
         }
     }
     function getUsers() {
