@@ -64,7 +64,7 @@
                 latlngBounds.extend(marker.position);
                 (function (marker, data) {
                     google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.description + "\n " + data.title + "°C");
+                        infoWindow.setContent("<p>" + data.description + "<p>" + " " + "<p>" + data.title  + "°C" + "<p>");
                         infoWindow.open(map, marker);
                     });
                 })(marker, data);
