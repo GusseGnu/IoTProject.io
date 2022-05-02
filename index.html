@@ -42,6 +42,7 @@
 
 
             var xhr = null;
+            var markers = null;
             getXmlHttpRequestObject = function () {
                 if (!xhr) {
                     // Create a new XMLHttpRequest object
@@ -57,7 +58,7 @@
                     //dataDiv = document.getElementById('result-container');
                     // Set current data text
                     //dataDiv.innerHTML = xhr.responseText;
-                    var markers = JSON.parse(xhr.responseText);
+                    markers = JSON.parse(xhr.responseText);
                     console.log(markers)
                 }
             }
