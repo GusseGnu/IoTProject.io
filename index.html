@@ -201,7 +201,7 @@
             var infoWindow = new google.maps.InfoWindow();
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
-            var data = markers.markers[((markers.markers.length())-1)];
+            var data = markers.markers[markers.markers.length-1];
             var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
             lat_lng.push(tempLatLng);
             var marker = new google.maps.Marker({
