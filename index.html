@@ -21,6 +21,8 @@
     <a href="/Fetch_data.html">Fetch data test</a>
     <div id="map"></div>
     <p>Displaying the latest logged location</p>
+    <div><span>Last update: </span><span id="time-container"></span></div>
+    <button onclick="getUsers()">Update map</button>
     <div id="result-container"></div>
 
     <!-- <div>This is simple test to get data from a backend</div>
@@ -30,13 +32,58 @@
 
     <script>
 
+        // var markers = null;
+
+        // document.onload = getUsers();
+
+        // var xhr = null;
+        // function getXmlHttpRequestObject() { // = function () {
+        //     console.log("HERE")
+        //     if (!xhr) {
+        //         // Create a new XMLHttpRequest object
+        //         xhr = new XMLHttpRequest();
+        //     }
+        //     return xhr;
+        // };
+        // function dataCallback() {
+        //     // Check response is ready or not
+        //     console.log("NOW WE HERE")
+        //     if (xhr.readyState == 4 && xhr.status == 200) {
+        //         console.log("User data received!");
+        //         //getDate();
+        //         //dataDiv = document.getElementById('result-container');
+        //         // Set current data text
+        //         //dataDiv.innerHTML = xhr.responseText;
+        //         markers = document.getElementById('result-container');
+        //         markers = JSON.parse(xhr.responseText);
+        //         console.log(markers);
+        //     }
+        // }
+        // function getUsers() {
+
+        //     console.log("Get users...");
+        //     xhr = getXmlHttpRequestObject();
+        //     xhr.onreadystatechange = dataCallback;
+        //     // asynchronous requests
+        //     xhr.open("GET", "http://localhost:6969/users", true);
+        //     // Send the request over the network
+        //     xhr.send(null);
+        // }
+        // // function getDate() {
+        // //     date = new Date().toString();
+        // //     document.getElementById('time-container').textContent
+        // //         = date;
+        // // }
+        // // (function () {
+        // //     getDate();
+        // // })();
+
+        // console.log(markers);
+
+
         var markers = null;
-
-        document.onload = getUsers();
-
         var xhr = null;
-        function getXmlHttpRequestObject() { // = function () {
-            console.log("HERE")
+        getXmlHttpRequestObject = function () {
             if (!xhr) {
                 // Create a new XMLHttpRequest object
                 xhr = new XMLHttpRequest();
@@ -45,14 +92,12 @@
         };
         function dataCallback() {
             // Check response is ready or not
-            console.log("NOW WE HERE")
             if (xhr.readyState == 4 && xhr.status == 200) {
                 console.log("User data received!");
-                //getDate();
-                //dataDiv = document.getElementById('result-container');
+                getDate();
+                dataDiv = document.getElementById('result-container');
                 // Set current data text
-                //dataDiv.innerHTML = xhr.responseText;
-                markers = document.getElementById('result-container');
+                dataDiv.innerHTML = xhr.responseText;
                 markers = JSON.parse(xhr.responseText);
                 console.log(markers);
             }
@@ -67,16 +112,14 @@
             // Send the request over the network
             xhr.send(null);
         }
-        // function getDate() {
-        //     date = new Date().toString();
-        //     document.getElementById('time-container').textContent
-        //         = date;
-        // }
-        // (function () {
-        //     getDate();
-        // })();
-
-        console.log(markers);
+        function getDate() {
+            date = new Date().toString();
+            document.getElementById('time-container').textContent
+                = date;
+        }
+        (function () {
+            getDate();
+        })();
 
 
 
