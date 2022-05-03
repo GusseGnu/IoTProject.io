@@ -30,10 +30,11 @@
 
     <script>
 
+        var markers = null;
+
         document.onload = function () {
 
             var xhr = null;
-            var markers = null
             getXmlHttpRequestObject = function () {
                 if (!xhr) {
                     // Create a new XMLHttpRequest object
