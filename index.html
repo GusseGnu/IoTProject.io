@@ -187,6 +187,7 @@
                 }
             }
 
+
             var mapOptions = {
                 center: new google.maps.LatLng(markers.markers[0].lat, markers.markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
                 zoom: 14,
@@ -200,24 +201,40 @@
             var infoWindow = new google.maps.InfoWindow();
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
-
-            for (i = 0; i < markers.markers.length; i++) {
-                var data = markers.markers[i]
-                var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
-                lat_lng.push(tempLatLng);
-                var marker = new google.maps.Marker({
-                    position: tempLatLng,
-                    map: map,
-                    title: data.title
+            var data = markers.markers[markers.markers.length];
+            var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
+            lat_lng.push(tempLatLng);
+            var marker = new google.maps.Marker({
+                position: tempLatLng,
+                map: map,
+                title: data.title
+            });
+            latlngBounds.extend(marker.position);
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    infoWindow.setContent("<p>" + data.description + "<p>" + " " + "<p>" + data.title + "°C" + "<p>");
+                    infoWindow.open(map, marker);
                 });
-                latlngBounds.extend(marker.position);
-                (function (marker, data) {
-                    google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent("<p>" + data.description + "<p>" + " " + "<p>" + data.title + "°C" + "<p>");
-                        infoWindow.open(map, marker);
-                    });
-                })(marker, data);
-            }
+            })(marker, data);
+
+
+            // for (i = 0; i < markers.markers.length; i++) {
+            //     var data = markers.markers[i]
+            //     var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
+            //     lat_lng.push(tempLatLng);
+            //     var marker = new google.maps.Marker({
+            //         position: tempLatLng,
+            //         map: map,
+            //         title: data.title
+            //     });
+            //     latlngBounds.extend(marker.position);
+            //     (function (marker, data) {
+            //         google.maps.event.addListener(marker, "click", function (e) {
+            //             infoWindow.setContent("<p>" + data.description + "<p>" + " " + "<p>" + data.title + "°C" + "<p>");
+            //             infoWindow.open(map, marker);
+            //         });
+            //     })(marker, data);
+            // }
 
             // function addMarker(coords) {
             //     var marker = new google.maps.Marker({
