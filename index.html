@@ -81,7 +81,17 @@
         // console.log(markers);
 
 
-        var markers = null;
+        var markers = [
+            {
+                "title": '2022-04-20 20:01:49',
+                "lat": '55.68540384710508',
+                "lng": '12.57997862227395',
+                "description": '2022-04-20 20:01:49'
+            }
+        ];
+
+
+        //var markers = null;
         var xhr = null;
         getXmlHttpRequestObject = function () {
             if (!xhr) {
@@ -123,15 +133,6 @@
         })();
 
 
-
-        var markers = [
-            {
-                "title": '2022-04-20 20:01:49',
-                "lat": '55.68540384710508',
-                "lng": '12.57997862227395',
-                "description": '2022-04-20 20:01:49'
-            }
-        ];
 
         function initMap() { //window.onload = function () { 
 
