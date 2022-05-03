@@ -81,14 +81,16 @@
         // console.log(markers);
 
 
-        var markers = [
-            {
-                "title": '2022-04-20 20:01:49',
-                "lat": '55.68540384710508',
-                "lng": '12.57997862227395',
-                "description": '2022-04-20 20:01:49'
-            }
-        ];
+        var markers = {
+            "markers": [
+                {
+                    "title": '2022-04-20 20:01:49',
+                    "lat": '55.68540384710508',
+                    "lng": '12.57997862227395',
+                    "description": '2022-04-20 20:01:49'
+                }
+            ]
+        }
 
 
         //var markers = null;
@@ -178,17 +180,15 @@
             // //     getDate();
             // // })();
 
-            if (markers != null)
-            {
+            if (markers != null) {
                 console.log(markers);
-                if (markers.markers != null)
-                {
+                if (markers.markers != null) {
                     console.log(markers.markers);
                 }
             }
 
             var mapOptions = {
-                center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
+                center: new google.maps.LatLng(markers.markers[0].lat, markers.markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
                 zoom: 14,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
