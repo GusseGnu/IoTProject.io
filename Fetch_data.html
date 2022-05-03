@@ -101,7 +101,7 @@
 
 
 
-
+    var markers = null;
     var xhr = null;
     getXmlHttpRequestObject = function () {
         if (!xhr) {
@@ -119,6 +119,8 @@
             // Set current data text
             dataDiv.innerHTML = xhr.responseText;
             console.log(JSON.parse(xhr.responseText));
+            markers = JSON.parse(xhr.responseText);
+            
         }
     }
     function getUsers() {
