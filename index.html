@@ -35,7 +35,7 @@
         document.onload = getUsers();
 
             var xhr = null;
-            getXmlHttpRequestObject = function () {
+            function getXmlHttpRequestObject () { // = function () {
                 if (!xhr) {
                     // Create a new XMLHttpRequest object
                     xhr = new XMLHttpRequest();
