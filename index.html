@@ -201,8 +201,8 @@
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
 
-            for (i = 0; i < markers.length; i++) {
-                var data = markers[i]
+            for (i = 0; i < markers.markers.length; i++) {
+                var data = markers.markers[i]
                 var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
                 lat_lng.push(tempLatLng);
                 var marker = new google.maps.Marker({
