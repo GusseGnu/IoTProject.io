@@ -30,17 +30,7 @@
 
     <script>
 
-        // var markers = [
-        //     {
-        //         "title": '2022-04-20 20:01:49',
-        //         "lat": '55.68540384710508',
-        //         "lng": '12.57997862227395',
-        //         "description": '2022-04-20 20:01:49'
-        //     }
-        // ];
-
-        function initMap() { //window.onload = function () { 
-
+        document.onload = function () {
 
             var xhr = null;
             var markers = null
@@ -84,6 +74,64 @@
             // })();
 
             console.log(markers);
+
+
+        }
+
+        // var markers = [
+        //     {
+        //         "title": '2022-04-20 20:01:49',
+        //         "lat": '55.68540384710508',
+        //         "lng": '12.57997862227395',
+        //         "description": '2022-04-20 20:01:49'
+        //     }
+        // ];
+
+        function initMap() { //window.onload = function () { 
+
+
+            // var xhr = null;
+            // var markers = null
+            // getXmlHttpRequestObject = function () {
+            //     if (!xhr) {
+            //         // Create a new XMLHttpRequest object
+            //         xhr = new XMLHttpRequest();
+            //     }
+            //     return xhr;
+            // };
+            // function dataCallback() {
+            //     // Check response is ready or not
+            //     if (xhr.readyState == 4 && xhr.status == 200) {
+            //         console.log("User data received!");
+            //         //getDate();
+            //         //dataDiv = document.getElementById('result-container');
+            //         // Set current data text
+            //         //dataDiv.innerHTML = xhr.responseText;
+            //         markers = document.getElementById('result-container');
+            //         markers = JSON.parse(xhr.responseText);
+            //         console.log(markers);
+            //     }
+            // }
+            // function getUsers() {
+
+            //     console.log("Get users...");
+            //     xhr = getXmlHttpRequestObject();
+            //     xhr.onreadystatechange = dataCallback;
+            //     // asynchronous requests
+            //     xhr.open("GET", "http://localhost:6969/users", true);
+            //     // Send the request over the network
+            //     xhr.send(null);
+            // }
+            // // function getDate() {
+            // //     date = new Date().toString();
+            // //     document.getElementById('time-container').textContent
+            // //         = date;
+            // // }
+            // // (function () {
+            // //     getDate();
+            // // })();
+
+            // console.log(markers);
 
             var mapOptions = {
                 center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
