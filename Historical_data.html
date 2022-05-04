@@ -49,10 +49,6 @@
         //     }
         // ];
 
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
         var markers = null;
 
         function getData() {
@@ -86,7 +82,7 @@
             if (markers == null) {
                 console.log("NO MARKERS FOUND")
                 getData();
-                await(sleep(1000))
+                await new Promise(r => setTimeout(r, 2000));
                 updateMap();
             }
 
