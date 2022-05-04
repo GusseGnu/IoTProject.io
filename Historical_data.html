@@ -82,8 +82,7 @@
             if (markers == null) {
                 console.log("NO MARKERS FOUND")
                 getData();
-                await new Promise(r => setTimeout(r, 2000));
-                updateMap();
+                setTimeout(() => {updateMap();}, 2000);
             }
 
             if (markers != null) {
