@@ -178,6 +178,7 @@
                 if (selectedMode != "NONE") {
                     var path = new google.maps.MVCArray();
                     if (selectedMode == "DIRECT") {
+                        directionsDisplay.setDirections(null);
                         var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
