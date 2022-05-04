@@ -80,17 +80,63 @@
 
         // console.log(markers);
 
+        var markers = null;
 
-        var markers = {
-            "markers": [
-                {
-                    "title": '2022-04-20 20:01:49',
-                    "lat": '55.68540384710508',
-                    "lng": '12.57997862227395',
-                    "description": '2022-04-20 20:01:49'
-                }
-            ]
+        window.onload = function getStartingData() {
+
+            var xhr = null;
+        getXmlHttpRequestObject = function () {
+            if (!xhr) {
+                // Create a new XMLHttpRequest object
+                xhr = new XMLHttpRequest();
+            }
+            return xhr;
+        };
+        function dataCallback() {
+            // Check response is ready or not
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log("User data received!");
+                getDate();
+                dataDiv = document.getElementById('result-container');
+                // Set current data text
+                //dataDiv.innerHTML = xhr.responseText;
+                markers = JSON.parse(xhr.responseText);
+                console.log(markers);
+                initMap();
+            }
         }
+        function getUsers() {
+
+            console.log("Get users...");
+            xhr = getXmlHttpRequestObject();
+            xhr.onreadystatechange = dataCallback;
+            // asynchronous requests
+            xhr.open("GET", "http://localhost:6969/users", true);
+            // Send the request over the network
+            xhr.send(null);
+        }
+        function getDate() {
+            date = new Date().toString();
+            document.getElementById('time-container').textContent
+                = date;
+        }
+        (function () {
+            getDate();
+        })();
+
+        }
+
+
+        // var markers = {
+        //     "markers": [
+        //         {
+        //             "title": '2022-04-20 20:01:49',
+        //             "lat": '55.68540384710508',
+        //             "lng": '12.57997862227395',
+        //             "description": '2022-04-20 20:01:49'
+        //         }
+        //     ]
+        // }
 
 
         //var markers = null;
