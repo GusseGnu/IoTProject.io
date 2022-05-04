@@ -85,18 +85,15 @@
         window.onload = function getStartingData() {
 
             var xhr = null;
-        getXmlHttpRequestObject = function () {
+            console.log("Get users...");
             if (!xhr) {
                 // Create a new XMLHttpRequest object
                 xhr = new XMLHttpRequest();
             }
-            return xhr;
-        };
-        function dataCallback() {
-            // Check response is ready or not
             if (xhr.readyState == 4 && xhr.status == 200) {
                 console.log("User data received!");
-                getDate();
+                date = new Date().toString();
+                document.getElementById('time-container').textContent = date;
                 dataDiv = document.getElementById('result-container');
                 // Set current data text
                 //dataDiv.innerHTML = xhr.responseText;
@@ -104,25 +101,10 @@
                 console.log(markers);
                 initMap();
             }
-        }
-        function getUsers() {
-
-            console.log("Get users...");
-            xhr = getXmlHttpRequestObject();
-            xhr.onreadystatechange = dataCallback;
             // asynchronous requests
             xhr.open("GET", "http://localhost:6969/users", true);
             // Send the request over the network
             xhr.send(null);
-        }
-        function getDate() {
-            date = new Date().toString();
-            document.getElementById('time-container').textContent
-                = date;
-        }
-        (function () {
-            getDate();
-        })();
 
         }
 
@@ -235,7 +217,7 @@
 
 
             var mapOptions = {
-                center: new google.maps.LatLng(markers.markers[markers.markers.length-1].lat, markers.markers[markers.markers.length-1].lng), //{lat:55.78218563118943, lng:12.518287389507199}
+                center: new google.maps.LatLng(markers.markers[markers.markers.length - 1].lat, markers.markers[markers.markers.length - 1].lng), //{lat:55.78218563118943, lng:12.518287389507199}
                 zoom: 14,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
@@ -247,7 +229,7 @@
             var infoWindow = new google.maps.InfoWindow();
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
-            var data = markers.markers[markers.markers.length-1];
+            var data = markers.markers[markers.markers.length - 1];
             var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
             lat_lng.push(tempLatLng);
             var marker = new google.maps.Marker({
