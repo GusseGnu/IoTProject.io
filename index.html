@@ -82,31 +82,28 @@
 
         var markers = null;
 
-        document.onload = function getStartingData() {
-
-            var xhr = null;
-            console.log("Get users...");
-            if (!xhr) {
-                // Create a new XMLHttpRequest object
-                xhr = new XMLHttpRequest();
-            }
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log("User data received!");
-                date = new Date().toString();
-                document.getElementById('time-container').textContent = date;
-                dataDiv = document.getElementById('result-container');
-                // Set current data text
-                //dataDiv.innerHTML = xhr.responseText;
-                markers = JSON.parse(xhr.responseText);
-                console.log(markers);
-                initMap();
-            }
-            // asynchronous requests
-            xhr.open("GET", "http://localhost:6969/users", true);
-            // Send the request over the network
-            xhr.send(null);
-
+        var xhr = null;
+        console.log("Get users...");
+        if (!xhr) {
+            // Create a new XMLHttpRequest object
+            xhr = new XMLHttpRequest();
         }
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log("User data received!");
+            date = new Date().toString();
+            document.getElementById('time-container').textContent = date;
+            dataDiv = document.getElementById('result-container');
+            // Set current data text
+            //dataDiv.innerHTML = xhr.responseText;
+            markers = JSON.parse(xhr.responseText);
+            console.log(markers);
+            initMap();
+        }
+        // asynchronous requests
+        xhr.open("GET", "http://localhost:6969/users", true);
+        // Send the request over the network
+        xhr.send(null);
+
 
 
         // var markers = {
