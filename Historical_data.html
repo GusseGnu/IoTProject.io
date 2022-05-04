@@ -82,13 +82,12 @@
             if (markers == null) {
                 console.log("NO MARKERS FOUND")
                 getData();
-                document.getElementById("myRange").max = markers.markers.length;
-                document.getElementById("myRange").value = markers.markers.length;
                 updateMap();
             }
 
             if (markers != null) {
                 console.log(markers);
+                updateMap();
                 if (markers.markers != null) {
                     console.log(markers.markers);
                 }
