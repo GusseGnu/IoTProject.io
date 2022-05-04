@@ -110,8 +110,18 @@
                 var infoWindow = new google.maps.InfoWindow();
                 var lat_lng = new Array();
                 var latlngBounds = new google.maps.LatLngBounds();
+                var tempVal = null;
 
-                for (i = 0; i < document.getElementById("val").value; i++) {
+                if (slider.value == null)
+                {
+                    tempVal = markers.markers.length;
+                }
+                else
+                {
+                    tempVal = slider.value;
+                }
+
+                for (i = 0; i < tempVal; i++) {
                     var data = markers.markers[i]
                     var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
                     lat_lng.push(tempLatLng);
