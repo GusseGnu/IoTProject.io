@@ -124,7 +124,6 @@
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
-            directionsDisplay.setMap(map);
             document.getElementById("myRange").max = markers.markers.length;
 
             //calculateAndDisplayRoute(directionsService, directionsDisplay);
@@ -143,6 +142,7 @@
                 var lat_lng = new Array();
                 var latlngBounds = new google.maps.LatLngBounds();
                 var tempVal = null;
+                directionsDisplay.setMap(map);
 
                 if (slider == null) {
                     tempVal = markers.markers.length;
