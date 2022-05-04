@@ -63,8 +63,6 @@
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     console.log("Data received!");
                     date = new Date().toString();
-                    //document.getElementById('time-container').textContent = date;
-                    //dataDiv = document.getElementById('result-container');
                     // Set current data
                     markers = JSON.parse(xhr.responseText);
                     console.log(markers);
