@@ -201,6 +201,7 @@
                                     travelMode: google.maps.DirectionsTravelMode[selectedMode]
                                 }, function (result, status) {
                                     if (status == google.maps.DirectionsStatus.OK) {
+                                        directionsDisplay.setDirections(result);
                                         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
                                             path.push(result.routes[0].overview_path[i]);
                                         }
