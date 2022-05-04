@@ -176,9 +176,9 @@
                 console.log(selectedMode);
 
                 if (selectedMode != "NONE") {
+                    var path = new google.maps.MVCArray();
+                    var service = new google.maps.DirectionsService();
                     if (selectedMode == "DIRECT") {
-                        var path = new google.maps.MVCArray();
-                        var service = new google.maps.DirectionsService();
                         var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
@@ -190,7 +190,6 @@
                         }
                     }
                     else {
-                        var service = new google.maps.DirectionsService();
                         for (var i = 0; i < lat_lng.length; i++) {
                             var src = lat_lng[i];
                             var des = lat_lng[i + 1];
