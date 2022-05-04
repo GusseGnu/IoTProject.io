@@ -92,12 +92,12 @@
             }
 
             var mapOptions = {
-                center: new google.maps.LatLng(markers[0].lat, markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
+                center: new google.maps.LatLng(markers.markers[0].lat, markers.markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
                 zoom: 12,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
-            document.getElementById("myRange").max = markers.length;
+            document.getElementById("myRange").max = markers.markers.length;
 
             const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
@@ -106,8 +106,8 @@
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
 
-            for (i = 0; i < markers.length; i++) {
-                var data = markers[i]
+            for (i = 0; i < markers.markers.length; i++) {
+                var data = markers.markers[i]
                 var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
                 lat_lng.push(tempLatLng);
                 var marker = new google.maps.Marker({
