@@ -159,20 +159,17 @@
                 }
             }
 
+            var slider = document.getElementById("myRange");
+            var output = document.getElementById("val");
+            output.innerHTML = slider.value;
 
-
-        }
-
-        var slider = document.getElementById("myRange");
-        var output = document.getElementById("val");
-        output.innerHTML = slider.value;
-
-        getData();
-        updateMap();
-
-        slider.oninput = function () {
-            output.innerHTML = this.value;
             updateMap();
+
+            slider.oninput = function () {
+                output.innerHTML = this.value;
+                updateMap();
+            }
+
         }
 
     </script>
