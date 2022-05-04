@@ -191,6 +191,7 @@
                     }
                     else {
 
+                        var service = new google.maps.DirectionsService();
                         for (var i = 0; i < lat_lng.length; i++) {
                             service.route({
                                 origin: src,
