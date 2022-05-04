@@ -16,7 +16,7 @@
         #floating-panel {
             position: absolute;
             top: 100px;
-            left: 25%;
+            left: 20%;
             z-index: 5;
             background-color: #fff;
             padding: 0px;
@@ -190,9 +190,10 @@
                         }
                     }
                     else {
-
                         var service = new google.maps.DirectionsService();
                         for (var i = 0; i < lat_lng.length; i++) {
+                            var src = lat_lng[i];
+                            var des = lat_lng[i + 1];
                             service.route({
                                 origin: src,
                                 destination: des,
