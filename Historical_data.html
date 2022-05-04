@@ -111,7 +111,7 @@
                 var lat_lng = new Array();
                 var latlngBounds = new google.maps.LatLngBounds();
 
-                for (i = 0; i < slider.value; i++) {
+                for (i = 0; i < document.getElementById("val"); i++) {
                     var data = markers.markers[i]
                     var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
                     lat_lng.push(tempLatLng);
