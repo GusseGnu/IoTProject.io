@@ -19,7 +19,7 @@
     <h1>IotProject</h1>
     <a href="index.html">Home</a>
     <div id="map"></div>
-    <p>TODO: Drag the slider to change the amount of points drawn</p>
+    <p>Drag the slider to change the amount of points drawn</p>
     <div class="slidecontainer">
         <input type="range" min="1" , value="50" max="100" class="slider" id="myRange">
         <p>Value: <span id="val"></span></p>
@@ -105,6 +105,8 @@
             const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
             function updateMap() {
+
+                console.log("UPDATING MAP")
 
                 var map = new google.maps.Map(document.getElementById('map'), mapOptions);
                 var infoWindow = new google.maps.InfoWindow();
