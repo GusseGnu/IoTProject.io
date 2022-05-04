@@ -176,6 +176,7 @@
                 console.log(selectedMode);
 
                 if (selectedMode != "NONE") {
+                    directionsDisplay.setDirections(null);
                     var path = new google.maps.MVCArray();
                     if (selectedMode == "DIRECT") {
                         directionsDisplay.setDirections(null);
