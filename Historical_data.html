@@ -15,7 +15,7 @@
 
         #floating-panel {
             position: absolute;
-            top: 80px;
+            top: 100px;
             left: 25%;
             z-index: 5;
             background-color: #fff;
@@ -177,6 +177,9 @@
 
                 if (selectedMode != "NONE") {
                     if (selectedMode == "DIRECT") {
+                        var path = new google.maps.MVCArray();
+                        var service = new google.maps.DirectionsService();
+                        var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
                                 var src = lat_lng[i];
