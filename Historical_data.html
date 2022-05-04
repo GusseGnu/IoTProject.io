@@ -12,12 +12,37 @@
             height: 600px;
             width: 100%;
         }
+
+        #floating-panel {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 0px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto', 'sans-serif';
+            line-height: 10px;
+            padding-left: 10px;
+        }
     </style>
 </head>
 
 <body>
     <h1>IotProject</h1>
     <a href="index.html">Home</a>
+    <div id="floating-panel">
+        <b>Mode of Travel: </b>
+        <select id="mode">
+            <option value="NONE">None</option>
+            <option value="DIRECT">Direct</option>
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+        </select>
+    </div>
     <div id="map"></div>
     <p>Drag the slider to change the amount of points drawn</p>
     <div class="slidecontainer">
@@ -80,7 +105,7 @@
             if (markers == null) {
                 console.log("NO MARKERS FOUND")
                 getData();
-                setTimeout(() => {updateMap();}, 2000);
+                setTimeout(() => { updateMap(); }, 2000);
             }
 
             if (markers != null) {
@@ -90,13 +115,22 @@
                 }
             }
 
+            var directionsDisplay = new google.maps.DirectionsRenderer;
+            var directionsService = new google.maps.DirectionsService;
+
             var mapOptions = {
                 center: new google.maps.LatLng(markers.markers[0].lat, markers.markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
                 zoom: 12,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
+            directionsDisplay.setMap(map);
             document.getElementById("myRange").max = markers.markers.length;
+
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+            document.getElementById('mode').addEventListener('change', function () {
+                calculateAndDisplayRoute(directionsService, directionsDisplay);
+            });
 
             const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
@@ -110,12 +144,10 @@
                 var latlngBounds = new google.maps.LatLngBounds();
                 var tempVal = null;
 
-                if (slider == null)
-                {
+                if (slider == null) {
                     tempVal = markers.markers.length;
                 }
-                else
-                {
+                else {
                     tempVal = slider.value;
                 }
 
@@ -140,33 +172,79 @@
                 map.setCenter(latlngBounds.getCenter());
                 map.fitBounds(latlngBounds);
 
-                var path = new google.maps.MVCArray();
-                var service = new google.maps.DirectionsService();
-                var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
+                function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+                    var selectedMode = document.getElementById('mode').value;
 
-                for (var i = 0; i < lat_lng.length; i++) {
-
-                    for (var i = 0; i < lat_lng.length; i++) {
-                        if ((i + 1) <= lat_lng.length) {
-                            var src = lat_lng[i];
-                            var des = lat_lng[i + 1];
-                            path.push(src);
-                            poly.setPath(path);
-                            // service.route({
-                            //     origin: src,
-                            //     destination: des,
-                            //     travelMode: google.maps.DirectionsTravelMode.WALKING
-                            // }, function (result, status) {
-                            //     if (status == google.maps.DirectionsStatus.OK) {
-                            //         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                            //             path.push(result.routes[0].overview_path[i]);
-                            //         }
-                            //     }
-                            // });
+                    if (selectedMode != "NONE") {
+                        if (selectedMode == "DIRECT") {
+                            for (var i = 0; i < lat_lng.length; i++) {
+                                if ((i + 1) <= lat_lng.length) {
+                                    var src = lat_lng[i];
+                                    var des = lat_lng[i + 1];
+                                    path.push(src);
+                                    poly.setPath(path);
+                                }
+                            }
                         }
-                    }
+                        else {
 
+                            for (var i = 0; i < lat_lng.length; i++) {
+                                service.route({
+                                    origin: src,
+                                    destination: des,
+                                    travelMode: google.maps.DirectionsTravelMode[selectedMode]
+                                }, function (result, status) {
+                                    if (status == google.maps.DirectionsStatus.OK) {
+                                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                                            path.push(result.routes[0].overview_path[i]);
+                                        }
+                                    }
+                                });
+                            }
+                        }
+
+                        // directionsService.route({
+                        //     origin: { lat: 20.39623, lng: 77.85009 },
+                        //     destination: { lat: 22.39623, lng: 80.85009 },
+
+                        //     travelMode: google.maps.TravelMode[selectedMode]
+                        // }, function (response, status) {
+                        //     if (status == google.maps.DirectionsStatus.OK) {
+                        //         directionsDisplay.setDirections(response);
+                        //     } else {
+                        //         window.alert('Directions request failed due to ' + status);
+                        //     }
+                        // });
+                    }
                 }
+
+                // var path = new google.maps.MVCArray();
+                // var service = new google.maps.DirectionsService();
+                // var poly = new google.maps.Polyline({ map: map, strokecolor: '#4986E7' });
+
+                // for (var i = 0; i < lat_lng.length; i++) {
+
+                //     for (var i = 0; i < lat_lng.length; i++) {
+                //         if ((i + 1) <= lat_lng.length) {
+                //             var src = lat_lng[i];
+                //             var des = lat_lng[i + 1];
+                //             path.push(src);
+                //             poly.setPath(path);
+                //             // service.route({
+                //             //     origin: src,
+                //             //     destination: des,
+                //             //     travelMode: google.maps.DirectionsTravelMode.WALKING
+                //             // }, function (result, status) {
+                //             //     if (status == google.maps.DirectionsStatus.OK) {
+                //             //         for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                //             //             path.push(result.routes[0].overview_path[i]);
+                //             //         }
+                //             //     }
+                //             // });
+                //         }
+                //     }
+
+                // }
             }
 
             var slider = document.getElementById("myRange");
