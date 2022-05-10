@@ -18,27 +18,58 @@
 <body>
     <h1>IotProject</h1>
     <a href="/Historical_data.html">Historical data</a>
-    <a href="/Fetch_data.html">Fetch data test</a>
+    <!-- <a href="/Fetch_data.html">Fetch data test</a> -->
     <div id="map"></div>
     <p>Displaying the latest logged location</p>
     <div><span>Last update: </span><span id="time-container"></span></div>
-    <button onclick="getUsers()">Update map</button>
+    <button onclick="getData()">Update map</button>
     <div id="result-container"></div>
-
-    <!-- <div>This is simple test to get data from a backend</div>
-    <div><span>Last update: </span><span id="time-container"></span></div>
-    <button onclick="getUsers()">Get user data</button>
-    <div id="result-container"></div> -->
 
     <script>
 
-        // var markers = null;
+        var markers = null;
 
-        // document.onload = getUsers();
+        function getData() {
+
+            var xhr = null;
+            console.log("Getting markers...");
+            if (!xhr) {
+                // Create a new XMLHttpRequest object
+                xhr = new XMLHttpRequest();
+            }
+            xhr.onreadystatechange = event => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log("Data received!");
+                    date = new Date().toString();
+                    document.getElementById('time-container').textContent = date;
+                    dataDiv = document.getElementById('result-container');
+                    // Set current data
+                    markers = JSON.parse(xhr.responseText);
+                    console.log(markers);
+                    initMap();
+                }
+            }
+            // asynchronous requests
+            xhr.open("GET", "http://localhost:6969/markers", true);
+            // Send the request over the network
+            xhr.send(null);
+        }
+
+
+        // var markers = {
+        //     "markers": [
+        //         { 
+        //             "title": '2022-04-20 20:01:49',
+        //             "lat": '55.68540384710508',
+        //             "lng": '12.57997862227395',
+        //             "description": '2022-04-20 20:01:49'
+        //         }
+        //     ]
+        // }
+
 
         // var xhr = null;
-        // function getXmlHttpRequestObject() { // = function () {
-        //     console.log("HERE")
+        // getXmlHttpRequestObject = function () {
         //     if (!xhr) {
         //         // Create a new XMLHttpRequest object
         //         xhr = new XMLHttpRequest();
@@ -47,16 +78,15 @@
         // };
         // function dataCallback() {
         //     // Check response is ready or not
-        //     console.log("NOW WE HERE")
         //     if (xhr.readyState == 4 && xhr.status == 200) {
-        //         console.log("User data received!");
-        //         //getDate();
-        //         //dataDiv = document.getElementById('result-container');
+        //         console.log("Data received!");
+        //         getDate();
+        //         dataDiv = document.getElementById('result-container');
         //         // Set current data text
         //         //dataDiv.innerHTML = xhr.responseText;
-        //         markers = document.getElementById('result-container');
         //         markers = JSON.parse(xhr.responseText);
         //         console.log(markers);
+        //         initMap();
         //     }
         // }
         // function getUsers() {
@@ -69,116 +99,23 @@
         //     // Send the request over the network
         //     xhr.send(null);
         // }
-        // // function getDate() {
-        // //     date = new Date().toString();
-        // //     document.getElementById('time-container').textContent
-        // //         = date;
-        // // }
-        // // (function () {
-        // //     getDate();
-        // // })();
-
-        // console.log(markers);
-
-
-        var markers = {
-            "markers": [
-                {
-                    "title": '2022-04-20 20:01:49',
-                    "lat": '55.68540384710508',
-                    "lng": '12.57997862227395',
-                    "description": '2022-04-20 20:01:49'
-                }
-            ]
-        }
-
-
-        //var markers = null;
-        var xhr = null;
-        getXmlHttpRequestObject = function () {
-            if (!xhr) {
-                // Create a new XMLHttpRequest object
-                xhr = new XMLHttpRequest();
-            }
-            return xhr;
-        };
-        function dataCallback() {
-            // Check response is ready or not
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log("User data received!");
-                getDate();
-                dataDiv = document.getElementById('result-container');
-                // Set current data text
-                //dataDiv.innerHTML = xhr.responseText;
-                markers = JSON.parse(xhr.responseText);
-                console.log(markers);
-                initMap();
-            }
-        }
-        function getUsers() {
-
-            console.log("Get users...");
-            xhr = getXmlHttpRequestObject();
-            xhr.onreadystatechange = dataCallback;
-            // asynchronous requests
-            xhr.open("GET", "http://localhost:6969/markers", true);
-            // Send the request over the network
-            xhr.send(null);
-        }
-        function getDate() {
-            date = new Date().toString();
-            document.getElementById('time-container').textContent
-                = date;
-        }
-        (function () {
-            getDate();
-        })();
+        // function getDate() {
+        //     date = new Date().toString();
+        //     document.getElementById('time-container').textContent
+        //         = date;
+        // }
+        // (function () {
+        //     getDate();
+        // })();
 
 
 
         function initMap() { //window.onload = function () { 
 
-
-            // var xhr = null;
-            // var markers = null
-            // getXmlHttpRequestObject = function () {
-            //     if (!xhr) {
-            //         // Create a new XMLHttpRequest object
-            //         xhr = new XMLHttpRequest();
-            //     }
-            //     return xhr;
-            // };
-            // function dataCallback() {
-            //     // Check response is ready or not
-            //     if (xhr.readyState == 4 && xhr.status == 200) {
-            //         console.log("User data received!");
-            //         //getDate();
-            //         //dataDiv = document.getElementById('result-container');
-            //         // Set current data text
-            //         //dataDiv.innerHTML = xhr.responseText;
-            //         markers = document.getElementById('result-container');
-            //         markers = JSON.parse(xhr.responseText);
-            //         console.log(markers);
-            //     }
-            // }
-            // function getUsers() {
-
-            //     console.log("Get users...");
-            //     xhr = getXmlHttpRequestObject();
-            //     xhr.onreadystatechange = dataCallback;
-            //     // asynchronous requests
-            //     xhr.open("GET", "http://localhost:6969/users", true);
-            //     // Send the request over the network
-            //     xhr.send(null);
-            // }
-            // // function getDate() {
-            // //     date = new Date().toString();
-            // //     document.getElementById('time-container').textContent
-            // //         = date;
-            // // }
-            // // (function () {
-            // //     getDate();
-            // // })();
+            if (markers == null) {
+                console.log("NO MARKERS FOUND")
+                getData();
+            }
 
             if (markers != null) {
                 console.log(markers);
@@ -189,11 +126,10 @@
 
 
             var mapOptions = {
-                center: new google.maps.LatLng(markers.markers[markers.markers.length-1].lat, markers.markers[markers.markers.length-1].lng), //{lat:55.78218563118943, lng:12.518287389507199}
+                center: new google.maps.LatLng(markers.markers[markers.markers.length - 1].lat, markers.markers[markers.markers.length - 1].lng), //{lat:55.78218563118943, lng:12.518287389507199}
                 zoom: 14,
                 //mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-
 
             const markerIcon = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
@@ -201,7 +137,7 @@
             var infoWindow = new google.maps.InfoWindow();
             var lat_lng = new Array();
             var latlngBounds = new google.maps.LatLngBounds();
-            var data = markers.markers[markers.markers.length-1];
+            var data = markers.markers[markers.markers.length - 1];
             var tempLatLng = new google.maps.LatLng(data.lat, data.lng);
             lat_lng.push(tempLatLng);
             var marker = new google.maps.Marker({
@@ -216,7 +152,6 @@
                     infoWindow.open(map, marker);
                 });
             })(marker, data);
-
 
 
 
@@ -258,51 +193,6 @@
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXnGWpzTdr4RosZvFjGLKRKky7j9Zo57A&callback=initMap">
         </script>
-
-    <!-- <script>
-
-        var xhr = null;
-
-        getXmlHttpRequestObject = function () {
-            if (!xhr) {
-                // Create a new XMLHttpRequest object 
-                xhr = new XMLHttpRequest();
-            }
-            return xhr;
-        };
-
-        function dataCallback() {
-            // Check response is ready or not
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log("User data received!");
-                getDate();
-                dataDiv = document.getElementById('result-container');
-                // Set current data text
-                dataDiv.innerHTML = xhr.responseText;
-            }
-        }
-
-        function getUsers() {
-            console.log("Get users...");
-            xhr = getXmlHttpRequestObject();
-            xhr.onreadystatechange = dataCallback;
-            // asynchronous requests
-            xhr.open("GET", "http://104.248.247.191:6969/users", true);
-
-            // Send the request over the network
-            xhr.send(null);
-        }
-
-        function getDate() {
-            date = new Date().toString();
-            document.getElementById('time-container').textContent
-                = date;
-        }
-        (function () {
-            getDate();
-        })();
-
-    </script> -->
 
 </body>
 
