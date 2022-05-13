@@ -172,6 +172,7 @@
                     else {
 
                         console.log(lat_lng[0]);
+                        console.log(lat_lng[tempVal]);
 
                         for (let i = 0; i < tempVal; i++) {
                             waypts.push({
@@ -181,8 +182,8 @@
 
                         directionsService
                             .route({
-                                origin: lat_lng[0].value,
-                                destination: lat_lng[tempVal].value,
+                                origin: markers.markers[0].getPosition(),
+                                destination: lat_lng[tempVal-1].getPosition(),
                                 waypoints: waypts,
                                 optimizeWaypoints: true,
                                 travelMode: google.maps.TravelMode[selectedMode],
