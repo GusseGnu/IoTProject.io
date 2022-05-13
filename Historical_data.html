@@ -171,19 +171,19 @@
                     }
                     else {
 
-                        console.log(lat_lng[0]);
-                        console.log(lat_lng[tempVal]);
-
                         for (let i = 0; i < tempVal; i++) {
                             waypts.push({
                                 location: markers.markers[i].position, stopover: true
                             });
                         }
 
+                    var tempLat = markers.markers[tempVal-1].getPosition.lat();
+                    var tempLng = markers.markers[tempVal-1].getPosition.lng();
+
                         directionsService
                             .route({
                                 origin: markers.markers[0].getPosition(),
-                                destination: lat_lng[tempVal-1].getPosition(),
+                                destination: markers.markers[slider.value-1].getPosition(),
                                 waypoints: waypts,
                                 optimizeWaypoints: true,
                                 travelMode: google.maps.TravelMode[selectedMode],
