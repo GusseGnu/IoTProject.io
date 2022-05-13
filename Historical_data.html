@@ -171,6 +171,8 @@
                     }
                     else {
 
+                        console.log(markers.markers[0].position);
+
                         for (let i = 0; i < tempVal; i++) {
                             waypts.push({
                                 location: markers.markers[i].position, stopover: true
@@ -184,7 +186,7 @@
                                 waypoints: waypts,
                                 optimizeWaypoints: true,
                                 travelMode: google.maps.TravelMode[selectedMode],
-                            })
+                            });
                         // .then((response) => {
                         //     directionsRenderer.setDirections(response);
                         // }
