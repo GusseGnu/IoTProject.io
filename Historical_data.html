@@ -177,13 +177,13 @@
                             });
                         }
 
-                    console.log(markers.markers[0].getPosition());
-                    console.log(markers.markers[slider.value-1].getPosition());
+                    console.log(lat_lng[0].getPosition());
+                    console.log(lat_lng[slider.value-1].getPosition());
 
                         directionsService
                             .route({
-                                origin: markers.markers[0].getPosition(),
-                                destination: markers.markers[slider.value-1].getPosition(),
+                                origin: lat_lng[0].getPosition(),
+                                destination: lat_lng[slider.value-1].getPosition(),
                                 waypoints: waypts,
                                 optimizeWaypoints: true,
                                 travelMode: google.maps.TravelMode[selectedMode],
