@@ -51,29 +51,6 @@
     </div>
     <script>
 
-        // var markers = [
-        //     {
-        //         "title": '2022-04-20 16:20:00',
-        //         "lat": '55.78218563118943',
-        //         "lng": '12.518287389507199',
-        //         "description": '2022-04-20 16:20:00'
-        //     }
-        //     ,
-        //     {
-        //         "title": '2022-04-20 17:43:07',
-        //         "lat": '55.75943650690966',
-        //         "lng": '12.602908188470689',
-        //         "description": '2022-04-20 17:43:07'
-        //     }
-        //     ,
-        //     {
-        //         "title": '2022-04-20 20:01:49',
-        //         "lat": '55.68540384710508',
-        //         "lng": '12.57997862227395',
-        //         "description": '2022-04-20 20:01:49'
-        //     }
-        // ];
-
         var markers = null;
 
         function getData() {
@@ -95,7 +72,7 @@
                 }
             }
             // asynchronous requests
-            xhr.open("GET", "192.168.0.107:6969/markers", true);
+            xhr.open("GET", "http://localhost:6969/markers", true);
             // Send the request over the network
             xhr.send(null);
         }
@@ -142,6 +119,8 @@
                 var lat_lng = new Array();
                 var latlngBounds = new google.maps.LatLngBounds();
                 var tempVal = null;
+                var waypts = [];
+
                 directionsDisplay.setMap(map);
 
                 if (slider == null) {
@@ -179,7 +158,7 @@
                     var path = new google.maps.MVCArray();
                     if (selectedMode == "DIRECT") {
                         directionsDisplay.setMap(null);
-                        var poly = new google.maps.Polyline({ map: map, strokecolor: '#66CCFF', strokeOpacity: 0.5});
+                        var poly = new google.maps.Polyline({ map: map, strokecolor: '#66CCFF', strokeOpacity: 0.5 });
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
                                 var src = lat_lng[i];
@@ -191,39 +170,45 @@
                         }
                     }
                     else {
-                        for (var i = 0; i < lat_lng.length - 1; i++) {
-                            if ((i + 1) <= lat_lng.length) {
-                                var src = lat_lng[i];
-                                var des = lat_lng[i + 1];
-                                console.log(des);
-                                directionsService.route({  //service.route({
-                                    origin: src,
-                                    destination: des,
-                                    travelMode: google.maps.DirectionsTravelMode[selectedMode]
-                                }, function (result, status) {
-                                    if (status == google.maps.DirectionsStatus.OK) {
-                                        directionsDisplay.setDirections(result);
-                                        //for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
-                                        //    path.push(result.routes[0].overview_path[i]);
-                                        //}
-                                    }
-                                });
-                            }
+
+                        for (let i = 0; i < tempVal; i++) {
+                            waypts.push({
+                                location: markers.markers[i].position, stopover: true
+                            });
                         }
+
+                        directionsService
+                            .route({
+                                origin: markers.markers[0].position,
+                                destination: markers.markers[tempVal],
+                                waypoints: waypts,
+                                optimizeWaypoints: true,
+                                travelMode: google.maps.TravelMode[selectedMode],
+                            })
+                        // .then((response) => {
+                        //     directionsRenderer.setDirections(response);
+                        // }
+
+                        // for (var i = 0; i < lat_lng.length - 1; i++) {
+                        //     if ((i + 1) <= lat_lng.length) {
+                        //         var src = lat_lng[i];
+                        //         var des = lat_lng[i + 1];
+                        //         console.log(des);
+                        //         directionsService.route({  //service.route({
+                        //             origin: src,
+                        //             destination: des,
+                        //             travelMode: google.maps.DirectionsTravelMode[selectedMode]
+                        //         }, function (result, status) {
+                        //             if (status == google.maps.DirectionsStatus.OK) {
+                        //                 directionsDisplay.setDirections(result);
+                        //                 //for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                        //                 //    path.push(result.routes[0].overview_path[i]);
+                        //                 //}
+                        //             }
+                        //         });
+                        //     }
+                        // }
                     }
-
-                    // directionsService.route({
-                    //     origin: { lat: 20.39623, lng: 77.85009 },
-                    //     destination: { lat: 22.39623, lng: 80.85009 },
-
-                    //     travelMode: google.maps.TravelMode[selectedMode]
-                    // }, function (response, status) {
-                    //     if (status == google.maps.DirectionsStatus.OK) {
-                    //         directionsDisplay.setDirections(response);
-                    //     } else {
-                    //         window.alert('Directions request failed due to ' + status);
-                    //     }
-                    // });
                 }
                 else {
                     directionsDisplay.setMap(null);
