@@ -184,7 +184,7 @@
                             .route({
                                 origin: lat_lng[0],
                                 destination: lat_lng[slider.value - 1],
-                                waypoints: waypts,
+                                waypoints: lat_lng,
                                 optimizeWaypoints: true,
                                 travelMode: google.maps.TravelMode[selectedMode],
                             })
