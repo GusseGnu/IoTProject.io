@@ -192,6 +192,10 @@
                                 if (status == google.maps.DirectionsStatus.OK) {
                                     directionsDisplay.setDirections(response);
                                 }
+                                else
+                                {
+                                    console.log("Error occured: " + status);
+                                }
 
                                     // const route = response.routes[0];
                                     // const summaryPanel = document.getElementById("directions-panel");
