@@ -177,8 +177,8 @@
                             });
                         }
 
-                    var tempLat = markers.markers[tempVal-1].getPosition.lat();
-                    var tempLng = markers.markers[tempVal-1].getPosition.lng();
+                    console.log(markers.markers[0].getPosition());
+                    console.log(markers.markers[slider.value-1].getPosition());
 
                         directionsService
                             .route({
