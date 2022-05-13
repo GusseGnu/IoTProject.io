@@ -158,7 +158,7 @@
                     var path = new google.maps.MVCArray();
                     if (selectedMode == "DIRECT") {
                         directionsDisplay.setMap(null);
-                        var poly = new google.maps.Polyline({ map: map, strokeColor: '#3399FF', strokeOpacity: 0.5 });
+                        var poly = new google.maps.Polyline({ map: map, strokeColor: '#3399FF', strokeOpacity: 0.6 });
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
                                 var src = lat_lng[i];
@@ -209,7 +209,7 @@
                                     //     summaryPanel.innerHTML += route.legs[i].distance.text + "<br><br>";
                                     // }
                                 })
-                            .catch((e) => window.alert("Directions request failed due to " + status));
+                            // .catch((e) => window.alert("Directions request failed due to " + status));
                     }
 
 
