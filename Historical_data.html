@@ -46,7 +46,7 @@
     <div id="map"></div>
     <p>Drag the slider to change the amount of points drawn</p>
     <div class="slidecontainer">
-        <input type="range" min="1" , value="50" max="100" class="slider" id="myRange">
+        <input type="range" min="1" , value="10" max="100" class="slider" id="myRange">
         <p>Value: <span id="val"></span></p>
     </div>
     <script>
@@ -175,6 +175,7 @@
                     else {
 
                         poly.setMap(null);
+                        poly.setPath(null);
 
                         for (let i = 1; i < tempVal - 1; i++) {
                             waypts.push({
@@ -263,6 +264,7 @@
                 else {
                     directionsDisplay.set('directions', null);
                     poly.setMap(null);
+                    poly.setPath(null);
                 }
             }
 
