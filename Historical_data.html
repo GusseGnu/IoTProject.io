@@ -121,6 +121,7 @@
                 var latlngBounds = new google.maps.LatLngBounds();
                 var tempVal = null;
                 var waypts = [];
+                directionsDisplay.setMap = null;
 
                 if (slider == null) {
                     tempVal = markers.markers.length;
@@ -179,6 +180,7 @@
 
                         console.log(lat_lng[0]);
                         console.log(lat_lng[slider.value - 1]);
+                        directionsDisplay.setMap(map);
 
                         directionsService
                             .route({
