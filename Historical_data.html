@@ -79,13 +79,10 @@
 
         function initMap() { //window.onload = function () { 
 
-            var mapOptions = {
-                center: new google.maps.LatLng(markers.markers[0].lat, markers.markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
-                zoom: 12,
-                //mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            if (map == null)
+            {
+                map = new google.maps.Map();
+            }
 
             if (markers == null) {
                 console.log("NO MARKERS FOUND")
@@ -100,6 +97,13 @@
                 }
             }
 
+            var mapOptions = {
+                center: new google.maps.LatLng(markers.markers[0].lat, markers.markers[0].lng), //{lat:55.78218563118943, lng:12.518287389507199}
+                zoom: 12,
+                //mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
             const directionsDisplay = new google.maps.DirectionsRenderer();
             const directionsService = new google.maps.DirectionsService();
             directionsDisplay.setMap(map);
