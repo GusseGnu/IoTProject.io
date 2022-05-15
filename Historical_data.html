@@ -174,8 +174,9 @@
                     }
                     else {
 
+                        var emptArr = [];
                         poly.setMap(null);
-                        poly.setPath([]);
+                        poly.setPath(emptArr);
 
                         for (let i = 1; i < tempVal - 1; i++) {
                             waypts.push({
@@ -263,8 +264,9 @@
                 }
                 else {
                     directionsDisplay.set('directions', null);
+                    var emptArr = [];
                     poly.setMap(null);
-                    poly.setPath([]);
+                    poly.setPath(emptArr);
                 }
             }
 
