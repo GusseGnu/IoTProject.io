@@ -158,7 +158,7 @@
                 if (selectedMode != "NONE") {
                     var path = new google.maps.MVCArray();
                     if (selectedMode == "DIRECT") {
-                        directionsDisplay.setMap(null);
+                        directionsDisplay.setDirections(null);
                         var poly = new google.maps.Polyline({ map: map, strokeColor: '#3399FF', strokeOpacity: 0.6 });
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
@@ -180,7 +180,6 @@
 
                         console.log(lat_lng[0]);
                         console.log(lat_lng[slider.value - 1]);
-                        directionsDisplay.setMap(map);
 
                         directionsService
                             .route({
