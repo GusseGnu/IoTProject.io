@@ -189,8 +189,9 @@
                                 travelMode: google.maps.TravelMode[selectedMode],
                             })
                             .then((response, status) => {
+                                directionsDisplay.setDirections(response)
                                 if (status == google.maps.DirectionsStatus.OK) {
-                                    directionsDisplay.setDirections(response);
+                                    // directionsDisplay.setDirections(response);
                                 }
                                 else
                                 {
