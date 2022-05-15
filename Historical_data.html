@@ -82,7 +82,7 @@
             if (markers == null) {
                 console.log("NO MARKERS FOUND")
                 getData();
-                setTimeout(() => { updateMap(); }, 2000);
+                setTimeout(() => { updateMap(map, directionsDisplay, directionsService); }, 2000);
             }
 
             if (markers != null) {
