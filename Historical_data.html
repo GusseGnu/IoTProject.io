@@ -79,20 +79,10 @@
 
         function initMap() { //window.onload = function () { 
 
-            if (map == null)
-            {
-                console.log("NO MAP");
-                const map = new google.maps.Map();
-            }
-            else
-            {
-                console.log("YES MAP");
-            }
-
             if (markers == null) {
                 console.log("NO MARKERS FOUND")
                 getData();
-                setTimeout(() => { updateMap(map, directionsDisplay, directionsService); }, 2000);
+                setTimeout(() => { updateMap(new google.maps.Map(), directionsDisplay, directionsService); }, 2000);
             }
 
             if (markers != null) {
