@@ -153,10 +153,11 @@
                 map.fitBounds(latlngBounds);
 
                 var selectedMode = document.getElementById('mode').value;
+                var poly = new google.maps.Polyline({ map: map, strokeColor: '#3399FF', strokeOpacity: 0.6 });
                 console.log(selectedMode);
 
+
                 if (selectedMode != "NONE") {
-                    var poly = new google.maps.Polyline({ map: map, strokeColor: '#3399FF', strokeOpacity: 0.6 });
                     var path = new google.maps.MVCArray();
                     if (selectedMode == "DIRECT") {
                         directionsDisplay.set('directions', null);
@@ -261,6 +262,7 @@
                 }
                 else {
                     directionsDisplay.set('directions', null);
+                    poly.setMap(null);
                 }
             }
 
