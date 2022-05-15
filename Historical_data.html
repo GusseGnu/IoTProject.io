@@ -153,7 +153,7 @@
                 map.fitBounds(latlngBounds);
 
                 var selectedMode = document.getElementById('mode').value;
-                var poly = new google.maps.Polyline({ map: map, strokeColor: '#3399FF', strokeOpacity: 0.6 });
+                var poly = new google.maps.Polyline({strokeColor: '#3399FF', strokeOpacity: 0.6 });
                 console.log(selectedMode);
 
 
@@ -161,6 +161,7 @@
                     var path = new google.maps.MVCArray();
                     if (selectedMode == "DIRECT") {
                         directionsDisplay.set('directions', null);
+                        poly.setMap(map);
                         // var poly = new google.maps.Polyline({ map: map, strokeColor: '#3399FF', strokeOpacity: 0.6 });
                         for (var i = 0; i < lat_lng.length; i++) {
                             if ((i + 1) <= lat_lng.length) {
